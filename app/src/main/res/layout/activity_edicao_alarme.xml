@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nome_alarme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"
+            android:layout_above="@id/timepicker_alarme"
+            android:hint="Nome"
+            android:inputType="text"
+            android:maxLines="1"
+            android:backgroundTint="@color/design_default_color_primary"
+
+            tools:targetApi="O"
+            tools:ignore="hardCodedText" />
+
+        <TimePicker
+            android:id="@+id/timepicker_alarme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:timePickerMode="spinner"
+            tools:targetApi="lollipop" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_confirma_alarme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            app:backgroundTint="@android:color/white"
+            app:tint="@color/design_default_color_primary"
+            android:src="@drawable/ic_baseline_check_24"
+            />
+
+    </RelativeLayout>

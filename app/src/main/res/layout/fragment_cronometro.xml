@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="br.com.william.a2pdm.viewModels.fragments.CronometroFragmentViewModel" />
+
+    </data>
+
+    <RelativeLayout
+
+        android:id="@+id/cronometro_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Chronometer
+            android:id="@+id/cronometro_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="54sp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="70dp"
+            android:format="00:00:00"
+             />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/flagged_time_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cronometro_text"
+            android:layout_above="@id/cronometro_fab_start"
+            android:layout_marginBottom="150dp"
+            android:layout_marginTop="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:showIf="@{!viewModel.isFlaggedListEmpty}"
+            tools:listitem="@layout/flagged_time_item"
+
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/cronometro_fab_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/ic_baseline_play_arrow_24"
+            app:backgroundTint="@android:color/white"
+            app:tint="@color/design_default_color_primary"
+
+            android:onClick="@{() -> viewModel.startChronometer()}"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/cronometro_fab_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/cronometro_fab_start"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="125dp"
+            android:src="@drawable/ic_baseline_pause_24"
+            app:backgroundTint="@android:color/white"
+            app:tint="@color/design_default_color_primary"
+
+            android:onClick="@{() -> viewModel.pauseChronometer()}"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/cronometro_fab_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/cronometro_fab_start"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="125dp"
+            android:src="@drawable/ic_baseline_stop_24"
+            app:backgroundTint="@android:color/white"
+            app:tint="@color/design_default_color_primary"
+
+            android:onClick="@{() -> viewModel.stopChronometer()}"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/cronometro_fab_flag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/cronometro_fab_start"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/ic_baseline_flag_24"
+            app:backgroundTint="@android:color/white"
+            app:tint="@color/design_default_color_primary"
+
+            android:onClick="@{() -> viewModel.flagChronometer()}"/>
+
+
+    </RelativeLayout>
+</layout>

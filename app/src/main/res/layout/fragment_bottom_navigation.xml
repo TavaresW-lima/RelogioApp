@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="viewModel"
+            type="br.com.william.a2pdm.viewModels.fragments.BottomNavigationFragmentViewModel" />
+
+        <variable
+            name="MenuEnum"
+            type="br.com.william.a2pdm.model.MenuAplicacaoEnum" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/main_navigation_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/white_with_top_stroke">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/botao_navigation_relogio"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:background="@color/white"
+            app:highlightIfSelected="@{viewModel.isRelogioSelected}"
+            android:src="@drawable/ic_baseline_access_time_24_relogio"
+            android:onClick="@{() -> viewModel.setMenu(MenuEnum.RELOGIO)}"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/botao_navigation_alarmes"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:background="@color/white"
+            app:highlightIfSelected="@{viewModel.isAlarmeSelected}"
+            android:src="@drawable/ic_baseline_access_alarms_24_alarme"
+            android:onClick="@{() -> viewModel.setMenu(MenuEnum.ALARME)}"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/botao_navigation_cronometro"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:background="@color/white"
+            app:highlightIfSelected="@{viewModel.isCronometroSelected}"
+            android:src="@drawable/ic_baseline_timer_24_cronometro"
+            android:onClick="@{() -> viewModel.setMenu(MenuEnum.CRONOMETRO)}"
+            />
+
+
+    </RelativeLayout>
+</layout>
