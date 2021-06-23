@@ -71,28 +71,20 @@ public class AlarmItemsAdapter extends RecyclerView.Adapter<AlarmItemsAdapter.Al
         private Alarme alarme;
         private final TextView nomeAlarme;
         private final TextView horarioAlarme;
-        private final SwitchMaterial switchAlarme;
 
         public AlarmItemViewHolder(@NonNull View itemView) {
             super(itemView);
             nomeAlarme = itemView.findViewById(R.id.nome_alarme);
             horarioAlarme = itemView.findViewById(R.id.horario_alarme);
-            switchAlarme = itemView.findViewById(R.id.switch_alarme);
         }
 
         public void bind(Alarme alarme) {
             this.alarme = alarme;
             nomeAlarme.setText(this.alarme.getNome());
             horarioAlarme.setText(this.alarme.getHorario().format(DateTimeFormatter.ofPattern("HH:mm")));
-            switchAlarme.setChecked(this.alarme.isActive());
-            configuraCliqueSwitch();
         }
 
-        private void configuraCliqueSwitch() {
-            switchAlarme.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                alarme.setActive(isChecked);
-            });
-        }
+
     }
 
     public List<Alarme> getAlarmeList() {
